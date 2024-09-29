@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Container</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            background-image: url('beluga.jpg'); /* Make sure this file exists */
+            background-size: cover; 
+            overflow: hidden; /* Prevent scrolling *//
+        }
+        .container {
+            width: 300px;
+            height: 300px;
+            background-color: white;
+            border: 2px solid #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            transition: transform 0.5s, top 0.5s, left 0.5s; /* Smooth repositioning */
+        }
+        .no-button {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .yes-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="container">
+        <h4>We don't have a preliminary examination, do you agree?</h4>
+        <button class="yes-button" onclick="openResponsePage()">Yes</button>
+        <button class="no-button" onmouseover="rotateContainer()">No</button>
+    </div>
+
+    <script>
+        let rotation = 0;
+        const container = document.getElementById('container');
+
+        function rotateContainer() {
+            rotation -= 360;
+            container.style.transform = `rotate(${rotation}deg)`; // Fixed the rotation syntax
+        }
+
+        document.addEventListener('mousemove', (event) => {
+            const rect = container.getBoundingClientRect();
+            const mouseX = event.clientX;
+            const mouseY = event.clientY;
+
+            // Check if the mouse is within the container
+            if (mouseX > rect.left && mouseX < rect.right && mouseY > rect.top && mouseY < rect.bottom) {
+                // Move the container away from the mouse
+                container.style.left = `${Math.random() * (window.innerWidth - rect.width)}px`;
+                container.style.top = `${Math.random() * (window.innerHeight - rect.height)}px`;
+            }
+        });
+
+        function openResponsePage() {
+            window.open('response.html', '_blank'); // Opens a new page
+        }
+    </script>
+</body>
+</html>
