@@ -13,7 +13,7 @@
             background-color: #f0f0f0;
             background-image: url('beluga.jpg'); /* Make sure this file exists */
             background-size: cover; 
-            overflow: hidden; /* Prevent scrolling */
+            overflow: hidden; /* Prevent scrolling *//
         }
         .container {
             width: 300px;
@@ -25,9 +25,6 @@
             align-items: center;
             justify-content: center;
             position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%); /* Center the container */
             transition: transform 0.5s, top 0.5s, left 0.5s; /* Smooth repositioning */
         }
         .no-button {
@@ -35,26 +32,16 @@
             bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
-            transition: background-color 0.3s; /* Smooth background color transition */
-        }
-        .no-button:hover {
-            background-color: #ddd; /* Change background on hover */
         }
         .yes-button {
             position: absolute;
             top: 10px;
             left: 10px;
-            transition: background-color 0.3s; /* Smooth background color transition */
-        }
-        .yes-button:hover {
-            background-color: #ddd; /* Change background on hover */
         }
     </style>
 </head>
 <body>
-    <!-- Hidden iframe for audio playback -->
-    <iframe width="0" height="0" src="https://www.youtube.com/embed/2pCfHNVKWAs?autoplay=1&loop=1&playlist=2pCfHNVKWAs&mute=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-
+    <iframe width="0" height="0" src="https://www.youtube.com/embed/2pCfHNVKWAs?autoplay=1&loop=1&playlist=2pCfHNVKWAs" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     <div class="container" id="container">
         <h4>We don't have a preliminary examination, do you agree?</h4>
         <button class="yes-button" onclick="openResponsePage()">Yes</button>
@@ -67,7 +54,7 @@
 
         function rotateContainer() {
             rotation -= 360;
-            container.style.transform = `translate(-50%, -50%) rotate(${rotation}deg)`; // Fix the rotation syntax
+            container.style.transform = `rotate(${rotation}deg)`; // Fixed the rotation syntax
         }
 
         document.addEventListener('mousemove', (event) => {
